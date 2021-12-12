@@ -1,10 +1,12 @@
 import { app, BrowserWindow } from "electron";
 import { join } from "path";
 
+const hasAccess = false;
+
 function createWindow() {
   const mainWindow = new BrowserWindow({
-    width: 500,
-    height: 500,
+    width: hasAccess ? 500 : 490,
+    height: hasAccess ? 500 : 350,
     title: "Bot Name",
     frame: false,
     resizable: false,
