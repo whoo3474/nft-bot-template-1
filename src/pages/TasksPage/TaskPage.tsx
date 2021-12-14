@@ -11,7 +11,13 @@ import {
   PlusIcon,
   TrashIcon,
 } from "../Pages.components";
-import { GweiInput, TaskHeaders } from "./TaskPage.components";
+import {
+  GweiInput,
+  TaskList,
+  TaskRow,
+  TasksColumnHeaders,
+  TaskStatus,
+} from "./TaskPage.components";
 
 export const TaskPage = () => {
   const gwei = useRef<HTMLInputElement>(null);
@@ -59,7 +65,60 @@ export const TaskPage = () => {
           />
         </ActionGroup>
       </ActionBarWithColumnHeaders>
-      <TaskHeaders></TaskHeaders>
+      <TasksColumnHeaders>
+        <div className="contract">Contract</div>
+        <div className="network">Network</div>
+        <div className="wallet">Wallet</div>
+        <div className="status">Status</div>
+        <div className="actions">Action</div>
+      </TasksColumnHeaders>
+      <TaskList>
+        <TaskRow
+          id="1"
+          contract="Showcase (Mainnet)"
+          network="Mainnet"
+          wallet="Walletname 1"
+          status={TaskStatus.Waiting}
+          onStartClick={() => {}}
+          onDeleteClick={() => {}}
+        />
+        <TaskRow
+          id="2"
+          contract="Showcase (Mainnet)"
+          network="Mainnet"
+          wallet="Walletname 2"
+          status={TaskStatus.Successful}
+          onStartClick={() => {}}
+          onDeleteClick={() => {}}
+        />
+        <TaskRow
+          id="3"
+          contract="Showcase (Mainnet)"
+          network="Mainnet"
+          wallet="Walletname 3"
+          status={TaskStatus.Waiting}
+          onStartClick={() => {}}
+          onDeleteClick={() => {}}
+        />
+        <TaskRow
+          id="4"
+          contract="Showcase (Mainnet)"
+          network="Mainnet"
+          wallet="Walletname 4"
+          status={TaskStatus.Waiting}
+          onStartClick={() => {}}
+          onDeleteClick={() => {}}
+        />
+        <TaskRow
+          id="5"
+          contract="Showcase (Mainnet)"
+          network="Mainnet"
+          wallet="Walletname 5"
+          status={TaskStatus.Waiting}
+          onStartClick={() => {}}
+          onDeleteClick={() => {}}
+        />
+      </TaskList>
     </Page>
   );
 };

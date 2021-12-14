@@ -1,20 +1,90 @@
 import { forwardRef, MouseEventHandler } from "react";
 import styled from "styled-components";
-import { OceanBlue } from "../../styles/Colors";
+import { OceanBlue, White } from "../../styles/Colors";
 import {
   GasIcon,
   IconContainer,
+  PlayIconGrey,
   RefreshWithCheckIcon,
+  TrashIconGrey,
 } from "../Pages.components";
-import { GweiInputWrapper } from "./TaskPage.wrappers";
+import { GweiInputWrapper, TaskRowWrapper } from "./TaskPage.wrappers";
 
-export const TaskHeaders = styled.div`
+export const TasksColumnHeaders = styled.div`
   display: flex;
+  align-items: center;
   height: 32px;
   background-color: ${OceanBlue};
   border-bottom-left-radius: 10px;
   border-bottom-right-radius: 10px;
+  font: 400 9px Montserrat;
+  color: ${White};
+  margin-bottom: 10px;
+
+  .contract {
+    margin-left: auto;
+    width: 255px;
+  }
+
+  .network {
+    width: 133px;
+  }
+
+  .wallet {
+    width: 212px;
+  }
+
+  .status {
+    width: 264px;
+  }
+
+  .actions {
+    width: 65px;
+  }
 `;
+
+export enum TaskStatus {
+  Waiting,
+  Successful,
+}
+
+export const TaskRow = ({
+  id,
+  contract,
+  network,
+  wallet,
+  status,
+  onStartClick,
+  onDeleteClick,
+}: {
+  id: string;
+  contract: string;
+  network: string;
+  wallet: string;
+  status: TaskStatus;
+  onStartClick: MouseEventHandler;
+  onDeleteClick: MouseEventHandler;
+}) => (
+  <TaskRowWrapper taskStatus={status}>
+    <div className="id">{id}</div>
+    <div className="contract">{contract}</div>
+    <div className="network">{network}</div>
+    <div className="wallet">{wallet}</div>
+    <div className="status">
+      {status === TaskStatus.Waiting
+        ? "Waiting for Drop"
+        : "Successfully Purchased NFT"}
+    </div>
+    <div className="actions">
+      <IconContainer className="button" size="26px" color="#2C2D30">
+        <PlayIconGrey />
+      </IconContainer>
+      <IconContainer className="button" size="26px" color="#2C2D30">
+        <TrashIconGrey />
+      </IconContainer>
+    </div>
+  </TaskRowWrapper>
+);
 
 export const GweiInput = forwardRef<
   HTMLInputElement,
@@ -41,3 +111,15 @@ export const GweiInput = forwardRef<
     </IconContainer>
   </GweiInputWrapper>
 ));
+
+export const TaskList = styled.div`
+  display: flex;
+  flex-direction: column;
+  row-gap: 10px;
+  -webkit-app-region: none;
+  height: 588px;
+  overflow-y: scroll;
+  ::-webkit-scrollbar {
+    display: none;
+  }
+`;
