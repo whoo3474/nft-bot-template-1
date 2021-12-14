@@ -2,19 +2,26 @@ import { Route, Routes, useLocation } from "react-router-dom";
 import {
   BotIcon,
   GasIcon,
-  GasTracker,
+  IconContainer,
   PageContainer,
-  SettingsIcon,
+  GearIcon1,
+  SideNavigationButtons,
+  WindowsIcon,
+  WalletIcon,
+} from "../../pages/Pages.components";
+import { SettingsPage } from "../../pages/SettingsPage/SettingsPage";
+import { TaskPage } from "../../pages/TasksPage/TaskPage";
+import { WalletsPage } from "../../pages/WalletsPage/WalletsPage";
+import { DarkCharcoal } from "../../styles/Colors";
+import {
+  GasTracker,
   SideNavigation,
   SideNavigationButton,
-  SideNavigationButtons,
   SideNavigationHeader,
   SideNavigationTools,
-  TasksIcon,
-  WalletsIcon,
   WindowButtons,
 } from "./ApplicationLayout.components";
-import { ApplicationLayoutWrapper } from "./ApplicationLayout.wrapper";
+import { ApplicationLayoutWrapper } from "./ApplicationLayout.wrappers";
 
 export const ApplicationLayout = () => {
   const { pathname } = useLocation();
@@ -30,19 +37,19 @@ export const ApplicationLayout = () => {
         <SideNavigationButtons>
           <div className="dashboard-title">Dashboard</div>
           <SideNavigationButton
-            ButtonIcon={TasksIcon}
+            ButtonIcon={WindowsIcon}
             buttonText="Tasks"
             currentPathname={pathname}
             to="/"
           />
           <SideNavigationButton
-            ButtonIcon={WalletsIcon}
+            ButtonIcon={WalletIcon}
             buttonText="Wallets"
             currentPathname={pathname}
             to="/wallets"
           />
           <SideNavigationButton
-            ButtonIcon={SettingsIcon}
+            ButtonIcon={GearIcon1}
             buttonText="Settings"
             currentPathname={pathname}
             to="/settings"
@@ -52,31 +59,33 @@ export const ApplicationLayout = () => {
           <div className="tools-title">
             <div className="title">Tools</div>
             <div className="last-block">
-              <span>Last Block: </span>
-              <span>7 seconds ago</span>
+              <div>Last Block: </div>
+              <div>7 seconds ago</div>
             </div>
           </div>
           <GasTracker>
             <div className="gas-tracker-header">
               <div className="gas-tracker-title">Gas Tracker</div>
-              <GasIcon />
+              <IconContainer size="26px" color={DarkCharcoal}>
+                <GasIcon />
+              </IconContainer>
             </div>
             <div className="tracker-values">
-              <span>Base Fee:</span>
-              <span>727.34 ETH</span>
+              <div>Base Fee:</div>
+              <div>727.34 ETH</div>
             </div>
             <div className="tracker-values">
-              <span>Rapid Price:</span>
-              <span>2341.10 ETH</span>
+              <div>Rapid Price:</div>
+              <div>2341.10 ETH</div>
             </div>
           </GasTracker>
         </SideNavigationTools>
       </SideNavigation>
       <PageContainer>
         <Routes>
-          <Route path="/" element={<div>tasks</div>} />
-          <Route path="/wallets" element={<div>wallets</div>} />
-          <Route path="/settings" element={<div>settings</div>} />
+          <Route path="/" element={<TaskPage />} />
+          <Route path="/wallets" element={<WalletsPage />} />
+          <Route path="/settings" element={<SettingsPage />} />
         </Routes>
       </PageContainer>
     </ApplicationLayoutWrapper>

@@ -12,3 +12,4 @@ export const BattleshipGrey = "#808183";
 export const ScreaminGreen = "#65E14C";
 export const Onyx = "#35363A";
 export const MediumSlateBlue = "#695FE9";
+export const Iris = "#4E44CE";
