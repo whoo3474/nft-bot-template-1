@@ -2,12 +2,12 @@ import { Route, Routes, useLocation } from "react-router-dom";
 import {
   BotIcon,
   GasIcon,
+  GearIcon1,
   IconContainer,
   PageContainer,
-  GearIcon1,
   SideNavigationButtons,
-  WindowsIcon,
   WalletIcon,
+  WindowsIcon,
 } from "../../pages/Pages.components";
 import { SettingsPage } from "../../pages/SettingsPage/SettingsPage";
 import { TaskPage } from "../../pages/TasksPage/TaskPage";
