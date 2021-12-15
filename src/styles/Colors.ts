@@ -14,3 +14,4 @@ export const Onyx = "#35363A";
 export const MediumSlateBlue = "#695FE9";
 export const Iris = "#4E44CE";
 export const VioletsAreBlue = "#877DFF";
+export const Tuna = "#393A3E";

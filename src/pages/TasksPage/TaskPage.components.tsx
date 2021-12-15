@@ -117,7 +117,7 @@ export const TaskList = styled.div`
   flex-direction: column;
   row-gap: 10px;
   -webkit-app-region: none;
-  height: 588px;
+  max-height: 588px;
   overflow-y: scroll;
   ::-webkit-scrollbar {
     display: none;

@@ -118,6 +118,24 @@ export const TaskPage = () => {
           onStartClick={() => {}}
           onDeleteClick={() => {}}
         />
+        <TaskRow
+          id="6"
+          contract="Showcase (Mainnet)"
+          network="Mainnet"
+          wallet="Walletname 6"
+          status={TaskStatus.Successful}
+          onStartClick={() => {}}
+          onDeleteClick={() => {}}
+        />
+        <TaskRow
+          id="7"
+          contract="Showcase (Mainnet)"
+          network="Mainnet"
+          wallet="Walletname 7"
+          status={TaskStatus.Waiting}
+          onStartClick={() => {}}
+          onDeleteClick={() => {}}
+        />
       </TaskList>
     </Page>
   );
