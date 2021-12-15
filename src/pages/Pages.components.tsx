@@ -548,3 +548,32 @@ export const CheckIconWhite = () => (
     />
   </svg>
 );
+
+export const CrossIcon = () => (
+  <svg
+    width="11"
+    height="11"
+    viewBox="0 0 11 11"
+    fill="none"
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <rect
+      x="0.535522"
+      y="1.94983"
+      width="2"
+      height="12"
+      rx="1"
+      transform="rotate(-45 0.535522 1.94983)"
+      fill="white"
+    />
+    <rect
+      x="1.94974"
+      y="10.4351"
+      width="2"
+      height="12"
+      rx="1"
+      transform="rotate(-135 1.94974 10.4351)"
+      fill="white"
+    />
+  </svg>
+);

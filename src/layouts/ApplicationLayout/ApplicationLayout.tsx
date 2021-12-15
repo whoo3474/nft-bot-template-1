@@ -1,4 +1,5 @@
 import { Route, Routes, useLocation } from "react-router-dom";
+import { AddTaskModal } from "../../modals/AddTask/AddTaskModal";
 import {
   BotIcon,
   GasIcon,
@@ -83,7 +84,14 @@ export const ApplicationLayout = () => {
       </SideNavigation>
       <PageContainer>
         <Routes>
-          <Route path="/" element={<TaskPage />} />
+          <Route
+            path="/"
+            element={
+              <AddTaskModal>
+                <TaskPage />
+              </AddTaskModal>
+            }
+          />
           <Route path="/wallets" element={<WalletsPage />} />
           <Route path="/settings" element={<SettingsPage />} />
         </Routes>

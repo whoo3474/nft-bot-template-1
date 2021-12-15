@@ -1,4 +1,5 @@
 import { useRef, useState } from "react";
+import { useAddTaskModalContext } from "../../modals/AddTask/AddTaskModal";
 import {
   ActionBarWithColumnHeaders,
   ActionButton,
@@ -22,6 +23,7 @@ import {
 export const TaskPage = () => {
   const gwei = useRef<HTMLInputElement>(null);
   const [isGweiCheckVisible, setGweiCheckVisible] = useState(true);
+  const { showAddTaskModal } = useAddTaskModalContext();
 
   return (
     <Page>
@@ -46,7 +48,7 @@ export const TaskPage = () => {
           <ActionButton
             buttonText="Create Tasks"
             ButtonIcon={PlusIcon}
-            onClick={() => {}}
+            onClick={showAddTaskModal}
           />
           <ActionButton
             buttonText="Start All"
