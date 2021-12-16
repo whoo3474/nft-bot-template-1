@@ -37,7 +37,7 @@ export const BlurBackdrop = styled.div`
   height: 100%;
   backdrop-filter: blur(10px);
   border-radius: 15px;
-  -webkit-app-region: drag;
+  -webkit-app-region: none;
 `;
 
 export const ModalHeader = styled.div`
