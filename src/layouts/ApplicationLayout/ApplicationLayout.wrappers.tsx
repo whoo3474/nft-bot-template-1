@@ -18,13 +18,13 @@ export const ApplicationLayoutWrapper = styled.div`
 
 export const WindowButtonsWrapper = styled.div`
   display: flex;
-  column-gap: 5px;
+  column-gap: 10px;
   margin-bottom: 15px;
 
   .button {
-    width: 8px;
-    height: 8px;
-    border-radius: 8px;
+    width: 12px;
+    height: 12px;
+    border-radius: 12px;
     -webkit-app-region: none;
     cursor: pointer;
   }
