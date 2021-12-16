@@ -1,5 +1,7 @@
 import { Route, Routes, useLocation } from "react-router-dom";
 import { AddTaskModal } from "../../modals/AddTaskModal/AddTaskModal";
+import { AddWalletModal } from "../../modals/AddWalletModal/AddWalletModal";
+import { CreateWalletModal } from "../../modals/CreateWalletModal/CreateWalletModal";
 import { ManageTaskModal } from "../../modals/ManageTaskModal/ManageTaskModal";
 import {
   BotIcon,
@@ -95,7 +97,16 @@ export const ApplicationLayout = () => {
               </AddTaskModal>
             }
           />
-          <Route path="/wallets" element={<WalletsPage />} />
+          <Route
+            path="/wallets"
+            element={
+              <AddWalletModal>
+                <CreateWalletModal>
+                  <WalletsPage />
+                </CreateWalletModal>
+              </AddWalletModal>
+            }
+          />
           <Route path="/settings" element={<SettingsPage />} />
         </Routes>
       </PageContainer>
