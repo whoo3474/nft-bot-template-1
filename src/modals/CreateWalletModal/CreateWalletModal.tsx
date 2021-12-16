@@ -35,7 +35,7 @@ export const CreateWalletModal = ({ children }: { children: ReactNode }) => {
       {children}
       {isModalVisible && (
         <Modal>
-          <BlurBackdrop />
+          <BlurBackdrop onClick={() => setModalVisible(false)} />
           <CreateWalletModalWrapper>
             <ModalHeader>
               <div className="modal-title">Create Wallet</div>

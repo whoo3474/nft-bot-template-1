@@ -50,7 +50,7 @@ export const ManageTaskModal = ({ children }: { children: ReactNode }) => {
       {children}
       {isModalVisible && (
         <Modal>
-          <BlurBackdrop />
+          <BlurBackdrop onClick={() => setModalVisible(false)} />
           <ManageTaskModalWrapper>
             <ModalHeader>
               <div className="modal-title">Manage Task</div>
