@@ -55,9 +55,9 @@ export const ModalHeader = styled.div`
 
   .close-modal-button {
     display: inline-block;
-    width: 8px;
-    height: 8px;
-    border-radius: 8px;
+    width: 12px;
+    height: 12px;
+    border-radius: 12px;
     background-color: ${SunsetOrange};
     cursor: pointer;
     -webkit-app-region: none;
