@@ -1,5 +1,6 @@
 import { Route, Routes, useLocation } from "react-router-dom";
-import { AddTaskModal } from "../../modals/AddTask/AddTaskModal";
+import { AddTaskModal } from "../../modals/AddTaskModal/AddTaskModal";
+import { ManageTaskModal } from "../../modals/ManageTaskModal/ManageTaskModal";
 import {
   BotIcon,
   GasIcon,
@@ -88,7 +89,9 @@ export const ApplicationLayout = () => {
             path="/"
             element={
               <AddTaskModal>
-                <TaskPage />
+                <ManageTaskModal>
+                  <TaskPage />
+                </ManageTaskModal>
               </AddTaskModal>
             }
           />

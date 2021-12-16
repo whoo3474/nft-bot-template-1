@@ -1,33 +1,35 @@
 import { createContext, ReactNode, useContext, useRef, useState } from "react";
-import { CrossIcon, PlusIcon } from "../../pages/Pages.components";
+import { CopyIcon, PencilIcon, PlusIcon } from "../../pages/Pages.components";
 import {
   BlurBackdrop,
   Modal,
   ModalBody,
   ModalButton,
   ModalColumn,
+  ModalColumnFixed,
   ModalFooter,
   ModalGroup,
   ModalHeader,
   ModalInput,
   ModalInputWithTitle,
-  ModalRow,
+  ModalInputWithTitleAndButton,
   ModalSelect,
+  ModalValueDisplay,
+  ToggleButton,
 } from "../Modal.components";
-import { ToggleButton } from "./AddTaskModal.components";
-import { AddTaskModalWrapper } from "./AddTaskModal.wrappers";
+import { ManageTaskModalWrapper } from "./ManageTaskModal.wrappers";
 
-export const AddTaskModalContext = createContext<{
-  showAddTaskModal: () => void;
+export const ManageTaskModalContext = createContext<{
+  showManageTaskModal: () => void;
 }>({
-  showAddTaskModal: () => undefined,
+  showManageTaskModal: () => undefined,
 });
 
-export function useAddTaskModalContext() {
-  return useContext(AddTaskModalContext);
+export function useManageTaskModalContext() {
+  return useContext(ManageTaskModalContext);
 }
 
-export const AddTaskModal = ({ children }: { children: ReactNode }) => {
+export const ManageTaskModal = ({ children }: { children: ReactNode }) => {
   const [isModalVisible, setModalVisible] = useState(false);
   const [isGasPriceRapid1, setGasPriceRapid1] = useState(true);
   const [isGasPriceRapid2, setGasPriceRapid2] = useState(false);
@@ -42,16 +44,16 @@ export const AddTaskModal = ({ children }: { children: ReactNode }) => {
   const gasLimit = useRef<HTMLInputElement>(null);
 
   return (
-    <AddTaskModalContext.Provider
-      value={{ showAddTaskModal: () => setModalVisible(true) }}
+    <ManageTaskModalContext.Provider
+      value={{ showManageTaskModal: () => setModalVisible(true) }}
     >
       {children}
       {isModalVisible && (
         <Modal>
           <BlurBackdrop />
-          <AddTaskModalWrapper>
+          <ManageTaskModalWrapper>
             <ModalHeader>
-              <div className="modal-title">Add Task</div>
+              <div className="modal-title">Manage Task</div>
               <div className="close-modal-container">
                 <div
                   className="close-modal-button"
@@ -60,6 +62,15 @@ export const AddTaskModal = ({ children }: { children: ReactNode }) => {
               </div>
             </ModalHeader>
             <ModalBody>
+              <ModalColumn>
+                <ModalValueDisplay title="Current Tasks" value="1" />
+                <ModalInputWithTitleAndButton
+                  title="Mass Updated Transaction Cost"
+                  placeholder="Enter Transaction Cost"
+                  ButtonIcon={PencilIcon}
+                  onClick={() => {}}
+                />
+              </ModalColumn>
               <ModalColumn>
                 <ModalSelect title="Wallet" placeholder="Wallet" values={[]} />
                 <ModalSelect
@@ -88,10 +99,10 @@ export const AddTaskModal = ({ children }: { children: ReactNode }) => {
                   placeholder="Function Parameters (seperated by commas)"
                 />
               </ModalColumn>
-              <ModalColumn>
-                <ModalGroup>
+              <ModalColumnFixed width="145px">
+                <ModalGroup marginTop="21px">
                   <div className="group-title">Gas Price Method</div>
-                  <ModalRow>
+                  <ModalColumn>
                     <ToggleButton
                       text="Rapid Price"
                       isSelected={isGasPriceRapid1}
@@ -119,14 +130,11 @@ export const AddTaskModal = ({ children }: { children: ReactNode }) => {
                         setGasPriceRapid3(true);
                       }}
                     />
-                  </ModalRow>
-                  <div className="group-footer">
-                    Send rapid gas price (displayed at the bottom left corner)
-                  </div>
+                  </ModalColumn>
                 </ModalGroup>
                 <ModalGroup>
                   <div className="group-title">Gas Limit Method</div>
-                  <ModalRow>
+                  <ModalColumn>
                     <ToggleButton
                       text="Auto"
                       isSelected={isGasLimitAuto}
@@ -149,25 +157,25 @@ export const AddTaskModal = ({ children }: { children: ReactNode }) => {
                       spellCheck={false}
                       disabled={!isGasLimitManual}
                     />
-                  </ModalRow>
+                  </ModalColumn>
                 </ModalGroup>
-              </ModalColumn>
+              </ModalColumnFixed>
             </ModalBody>
             <ModalFooter>
               <ModalButton
-                text="Cancel"
-                ButtonIcon={CrossIcon}
-                onClick={() => setModalVisible(false)}
-              />
-              <ModalButton
-                text="Add Task"
+                text="Edit Tasks"
                 ButtonIcon={PlusIcon}
                 onClick={() => {}}
               />
+              <ModalButton
+                text="Duplicate"
+                ButtonIcon={CopyIcon}
+                onClick={() => {}}
+              />
             </ModalFooter>
-          </AddTaskModalWrapper>
+          </ManageTaskModalWrapper>
         </Modal>
       )}
-    </AddTaskModalContext.Provider>
+    </ManageTaskModalContext.Provider>
   );
 };

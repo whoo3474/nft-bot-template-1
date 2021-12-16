@@ -11,8 +11,11 @@ import {
 import {
   ModalButtonWrapper,
   ModalGroupWrapper,
+  ModalInputWithTitleAndButtonWrapper,
   ModalInputWithTitleWrapper,
   ModalSelectWrapper,
+  ModalValueDisplayWrapper,
+  ToggleButtonWrapper,
 } from "./Modal.wrappers";
 
 export const Modal = styled.div`
@@ -109,6 +112,14 @@ export const ModalColumn = styled.div`
   flex: 1;
 `;
 
+export const ModalColumnFixed = styled.div<{ width: string }>`
+  display: flex;
+  flex-direction: column;
+  row-gap: 10px;
+  width: ${({ width }) => width};
+  justify-content: space-between;
+`;
+
 export const ModalRow = styled.div`
   display: flex;
   column-gap: 10px;
@@ -121,15 +132,19 @@ export const ModalBody = styled.div`
   padding: 15px 30px 15px 30px;
 `;
 
-export const ModalGroup = ({ children }: { children: ReactNode }) => (
-  <ModalGroupWrapper>{children}</ModalGroupWrapper>
-);
+export const ModalGroup = ({
+  children,
+  marginTop,
+}: {
+  children: ReactNode;
+  marginTop?: string;
+}) => <ModalGroupWrapper marginTop={marginTop}>{children}</ModalGroupWrapper>;
 
 export const ModalInput = styled.input`
   background-color: ${DarkCharcoal};
   font: 700 11px Montserrat;
   color: ${White};
-  height: 36px;
+  min-height: 36px;
   border-radius: 5px;
   border: none;
   outline: none;
@@ -167,3 +182,61 @@ export const ModalFooter = styled.div`
   margin-bottom: 30px;
   margin-right: 30px;
 `;
+
+export const ToggleButton = ({
+  text,
+  isSelected,
+  onClick,
+}: {
+  text: string;
+  isSelected: boolean;
+  onClick: MouseEventHandler;
+}) => (
+  <ToggleButtonWrapper isSelected={isSelected} onClick={onClick}>
+    {text}
+  </ToggleButtonWrapper>
+);
+
+export const ModalValueDisplay = ({
+  title,
+  value,
+}: {
+  title: string;
+  value: string;
+}) => (
+  <ModalValueDisplayWrapper>
+    <div className="value-title">{title}</div>
+    <div className="value">{value}</div>
+  </ModalValueDisplayWrapper>
+);
+
+export const ModalInputWithTitleAndButton = forwardRef<
+  HTMLInputElement,
+  {
+    title: string;
+    placeholder: string;
+    ButtonIcon: ComponentType;
+    onClick: MouseEventHandler;
+  }
+>(({ title, placeholder, ButtonIcon, onClick }, ref) => (
+  <ModalInputWithTitleAndButtonWrapper>
+    <div className="input-title">{title}</div>
+    <div className="modal-input-wrapper">
+      <input
+        className="modal-input"
+        type="text"
+        placeholder={placeholder}
+        spellCheck={false}
+        ref={ref}
+      />
+      <IconContainer
+        onClick={onClick}
+        className="button"
+        size="26px"
+        color={DarkCharcoal}
+      >
+        <ButtonIcon />
+      </IconContainer>
+    </div>
+  </ModalInputWithTitleAndButtonWrapper>
+));
