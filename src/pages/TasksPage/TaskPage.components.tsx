@@ -1,6 +1,6 @@
 import { forwardRef, MouseEventHandler } from "react";
 import styled from "styled-components";
-import { OceanBlue, White } from "../../styles/Colors";
+import { DarkCharcoal, OceanBlue, White } from "../../styles/Colors";
 import {
   GasIcon,
   IconContainer,
@@ -76,10 +76,10 @@ export const TaskRow = ({
         : "Successfully Purchased NFT"}
     </div>
     <div className="actions">
-      <IconContainer className="button" size="26px" color="#2C2D30">
+      <IconContainer className="button" size="26px" color={DarkCharcoal}>
         <PlayIconGrey />
       </IconContainer>
-      <IconContainer className="button" size="26px" color="#2C2D30">
+      <IconContainer className="button" size="26px" color={DarkCharcoal}>
         <TrashIconGrey />
       </IconContainer>
     </div>
@@ -91,7 +91,7 @@ export const GweiInput = forwardRef<
   { onRefreshClick: MouseEventHandler; isGweiCheckVisible: boolean }
 >(({ onRefreshClick, isGweiCheckVisible }, ref) => (
   <GweiInputWrapper>
-    <IconContainer size="26px" color="#FFFFFF24">
+    <IconContainer size="26px" color={`${White}24`}>
       <GasIcon />
     </IconContainer>
     <input
@@ -105,7 +105,7 @@ export const GweiInput = forwardRef<
       className="refresh-button"
       onClick={onRefreshClick}
       size="26px"
-      color="#FFFFFF24"
+      color={`${White}24`}
     >
       <RefreshWithCheckIcon isCheckVisible={isGweiCheckVisible} />
     </IconContainer>

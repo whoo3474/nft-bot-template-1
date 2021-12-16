@@ -169,7 +169,7 @@ export const ModalButton = ({
 }) => (
   <ModalButtonWrapper onClick={onClick}>
     <div>{text}</div>
-    <IconContainer size="24px" color="#FFFFFF14">
+    <IconContainer size="24px" color={`${White}14`}>
       <ButtonIcon />
     </IconContainer>
   </ModalButtonWrapper>
